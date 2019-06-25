@@ -1,66 +1,119 @@
 fileFormatVersion: 2
 guid: 81fbe5e7667573f4bb9e6d81e72fcad0
 ModelImporter:
-  serializedVersion: 25
-  internalIDToNameTable:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: JointA
+    100002: JointB
+    100004: JointC
+    100006: JointD
+    100008: Long_TankA
+    100010: //RootNode
+    100012: polySurface423
+    100014: polySurface470
+    100016: Round_Valve1
+    100018: Round_Valve_Lever
+    100020: ThickbendA
+    100022: ThickbendB
+    100024: ThickbendC
+    100026: ThickpipeA
+    100028: ThickpipeB
+    100030: ThickpipeC
+    100032: Thin_bendA
+    100034: Thin_PipeA
+    100036: Thin_PipeB
+    100038: Valve
+    100040: Valve_Lever
+    400000: JointA
+    400002: JointB
+    400004: JointC
+    400006: JointD
+    400008: Long_TankA
+    400010: //RootNode
+    400012: polySurface423
+    400014: polySurface470
+    400016: Round_Valve1
+    400018: Round_Valve_Lever
+    400020: ThickbendA
+    400022: ThickbendB
+    400024: ThickbendC
+    400026: ThickpipeA
+    400028: ThickpipeB
+    400030: ThickpipeC
+    400032: Thin_bendA
+    400034: Thin_PipeA
+    400036: Thin_PipeB
+    400038: Valve
+    400040: Valve_Lever
+    2300000: JointA
+    2300002: JointB
+    2300004: JointC
+    2300006: JointD
+    2300008: Long_TankA
+    2300010: polySurface470
+    2300012: Round_Valve1
+    2300014: Round_Valve_Lever
+    2300016: ThickbendA
+    2300018: ThickbendB
+    2300020: ThickbendC
+    2300022: ThickpipeA
+    2300024: ThickpipeB
+    2300026: ThickpipeC
+    2300028: Thin_bendA
+    2300030: Thin_PipeA
+    2300032: Thin_PipeB
+    2300034: Valve
+    2300036: Valve_Lever
+    3300000: JointA
+    3300002: JointB
+    3300004: JointC
+    3300006: JointD
+    3300008: Long_TankA
+    3300010: polySurface470
+    3300012: Round_Valve1
+    3300014: Round_Valve_Lever
+    3300016: ThickbendA
+    3300018: ThickbendB
+    3300020: ThickbendC
+    3300022: ThickpipeA
+    3300024: ThickpipeB
+    3300026: ThickpipeC
+    3300028: Thin_bendA
+    3300030: Thin_PipeA
+    3300032: Thin_PipeB
+    3300034: Valve
+    3300036: Valve_Lever
+    4300000: ThickbendA
+    4300002: ThickpipeA
+    4300004: JointB
+    4300006: Valve
+    4300008: Valve_Lever
+    4300010: polySurface470
+    4300012: JointA
+    4300014: ThickpipeB
+    4300016: ThickbendB
+    4300018: JointC
+    4300020: ThickpipeC
+    4300022: JointD
+    4300024: ThickbendC
+    4300026: Thin_PipeA
+    4300028: Thin_PipeB
+    4300030: Thin_bendA
+    4300032: Long_TankA
+    4300034: Round_Valve_Lever
+    4300036: Round_Valve1
+    11100000: //RootNode
+  externalObjects:
   - first:
-      43: 4300000
-    second: ThickbendA
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Long_TankA_Material
+    second: {fileID: 2100000, guid: 47f7779973dba914284b26775eb6dc63, type: 2}
   - first:
-      43: 4300002
-    second: ThickpipeA
-  - first:
-      43: 4300004
-    second: JointB
-  - first:
-      43: 4300006
-    second: Valve
-  - first:
-      43: 4300008
-    second: Valve_Lever
-  - first:
-      43: 4300010
-    second: polySurface470
-  - first:
-      43: 4300012
-    second: JointA
-  - first:
-      43: 4300014
-    second: ThickpipeB
-  - first:
-      43: 4300016
-    second: ThickbendB
-  - first:
-      43: 4300018
-    second: JointC
-  - first:
-      43: 4300020
-    second: ThickpipeC
-  - first:
-      43: 4300022
-    second: JointD
-  - first:
-      43: 4300024
-    second: ThickbendC
-  - first:
-      43: 4300026
-    second: Thin_PipeA
-  - first:
-      43: 4300028
-    second: Thin_PipeB
-  - first:
-      43: 4300030
-    second: Thin_bendA
-  - first:
-      43: 4300032
-    second: Long_TankA
-  - first:
-      43: 4300034
-    second: Round_Valve_Lever
-  - first:
-      43: 4300036
-    second: Round_Valve1
-  externalObjects: {}
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert3
+    second: {fileID: 2100000, guid: 5335d0600e1e88142918ca22e7e7e54f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -102,19 +155,18 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    meshOptimizationFlags: -1
     indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -123,11 +175,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -137,7 +188,6 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
