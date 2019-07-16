@@ -579,7 +579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 661290550994549835}
   m_Layer: 0
-  m_Name: Negative_Gate2
+  m_Name: N2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11683,7 +11683,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8230134862686298375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.73, y: 0, z: -0.16}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8230134862686677669}
@@ -11760,7 +11760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8230134862686308767}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.607, y: 2.6399996, z: 12.04}
+  m_LocalPosition: {x: 3.03, y: 2.6399996, z: 12.04}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children:
   - {fileID: 8230134862686691901}
@@ -14810,12 +14810,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 64306199037219806, guid: 4f1a9ff5c56bbac41b3ecf0e16ca1978,
+    - target: {fileID: 64202722423557560, guid: 4f1a9ff5c56bbac41b3ecf0e16ca1978,
         type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 64202722423557560, guid: 4f1a9ff5c56bbac41b3ecf0e16ca1978,
+    - target: {fileID: 64306199037219806, guid: 4f1a9ff5c56bbac41b3ecf0e16ca1978,
         type: 3}
       propertyPath: m_Material
       value: 
@@ -14946,12 +14946,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 64306199037219806, guid: 4f1a9ff5c56bbac41b3ecf0e16ca1978,
+    - target: {fileID: 64202722423557560, guid: 4f1a9ff5c56bbac41b3ecf0e16ca1978,
         type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 64202722423557560, guid: 4f1a9ff5c56bbac41b3ecf0e16ca1978,
+    - target: {fileID: 64306199037219806, guid: 4f1a9ff5c56bbac41b3ecf0e16ca1978,
         type: 3}
       propertyPath: m_Material
       value: 

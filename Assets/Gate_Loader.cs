@@ -2,12 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class Gate_Loader : MonoBehaviour
 {
     [SerializeField] GameObject[] Gates;
     [SerializeField] GameObject[] PositiveGatePrefabs;
     [SerializeField] GameObject[] NegativeGatePrefabs;
+
+    public NavMeshSurface surface;
+
+    bool isGatesInstantiated = false;
 
     int[] Rotations = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     int[] GateOrder = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -19,7 +25,10 @@ public class Gate_Loader : MonoBehaviour
 
         GenerateRandomRotations();
 
-        InstantiateGatePrefabs();
+        InstantiateGatePrefabs(isGatesInstantiated);
+
+        //updates navmesh
+        surface.BuildNavMesh();
 
     }
 
@@ -31,40 +40,44 @@ public class Gate_Loader : MonoBehaviour
         }
     }
 
-    private void InstantiateGatePrefabs()
+    private void InstantiateGatePrefabs(bool isGatesInstantiated)
     {
-        int posGates = 0;
-        int negGates = 0;
-
-        for (int i = 0; i < GateOrder.Length; i++)
+        if (!isGatesInstantiated)
         {
-            if (GateOrder[i] % 2 == 0) //if even
-            {
-                if(Rotations[i] == 0)
-                {
-                    Instantiate(PositiveGatePrefabs[posGates], Gates[i].transform.position, Quaternion.identity);
-                }
-                else
-                {
-                    Instantiate(PositiveGatePrefabs[posGates], Gates[i].transform.position, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
-                }
+            int posGates = 0;
+            int negGates = 0;
 
-                posGates++;
-            }
-            else //if odd
+            for (int i = 0; i < GateOrder.Length; i++)
             {
-                if (Rotations[i] == 0)
+                if (GateOrder[i] % 2 == 0) //if even
                 {
-                    Instantiate(NegativeGatePrefabs[negGates], Gates[i].transform.position, Quaternion.identity);
+                    if (Rotations[i] == 0)
+                    {
+                        Instantiate(PositiveGatePrefabs[posGates], Gates[i].transform.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        Instantiate(PositiveGatePrefabs[posGates], Gates[i].transform.position, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
+                    }
+
+                    posGates++;
                 }
-                else
+                else //if odd
                 {
-                    Instantiate(NegativeGatePrefabs[negGates], Gates[i].transform.position, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
+                    if (Rotations[i] == 0)
+                    {
+                        Instantiate(NegativeGatePrefabs[negGates], Gates[i].transform.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        Instantiate(NegativeGatePrefabs[negGates], Gates[i].transform.position, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
+                    }
+
+                    negGates++;
                 }
-                
-                negGates++;
             }
         }
+        isGatesInstantiated = true;
     }
 
 
