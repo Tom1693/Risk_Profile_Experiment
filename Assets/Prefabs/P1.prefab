@@ -7319,7 +7319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8980487501976962932}
   m_Layer: 0
-  m_Name: UncertainWaypoint
+  m_Name: CertainWaypoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7337,7 +7337,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5935639261980162599}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1986087694132464419
 GameObject:
@@ -12765,7 +12765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2993439579630737965}
   m_Layer: 0
-  m_Name: CertainWaypoint
+  m_Name: UncertainWaypoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12783,7 +12783,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5935639261980162599}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5407021765432122888
 GameObject:
@@ -17835,8 +17835,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8980487501976962932}
   - {fileID: 2993439579630737965}
+  - {fileID: 8980487501976962932}
   - {fileID: 406504580845600458}
   - {fileID: 5935639262242147271}
   - {fileID: 5935639260649763027}
