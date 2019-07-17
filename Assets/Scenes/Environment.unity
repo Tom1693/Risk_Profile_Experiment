@@ -8136,7 +8136,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &705601813
 PrefabInstance:
@@ -10966,6 +10966,7 @@ GameObject:
   m_Component:
   - component: {fileID: 928599350}
   - component: {fileID: 928599351}
+  - component: {fileID: 928599352}
   m_Layer: 0
   m_Name: Gates
   m_TagString: Untagged
@@ -10995,7 +10996,7 @@ Transform:
   - {fileID: 1164585561}
   - {fileID: 534378137}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &928599351
 MonoBehaviour:
@@ -11033,6 +11034,22 @@ MonoBehaviour:
   - {fileID: 661290550994549834, guid: 434cd0c0b4b670441b411526f24e6179, type: 3}
   - {fileID: 8521464140430510050, guid: addf1808e324f76409b8196e6392eed3, type: 3}
   surface: {fileID: 1935344863}
+  Rotations: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  GateOrder: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
+--- !u!114 &928599352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928599349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b75362fa431e4d94dbea8b0f0d816329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meeple: {fileID: 0}
+  grandChild: {fileID: 0}
 --- !u!1001 &936720626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17760,7 +17777,7 @@ Transform:
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &1494157231
 MonoBehaviour:
@@ -17776,6 +17793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 963194227}
   agent: {fileID: 1494157232}
+  gates: {fileID: 928599351}
 --- !u!195 &1494157232
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -19678,7 +19696,7 @@ Transform:
   - {fileID: 1235375277}
   - {fileID: 1269067389}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1651727014
 PrefabInstance:
@@ -23408,7 +23426,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1941462080
 PrefabInstance:

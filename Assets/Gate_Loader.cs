@@ -15,11 +15,13 @@ public class Gate_Loader : MonoBehaviour
 
     bool isGatesInstantiated = false;
 
-    int[] Rotations = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-    int[] GateOrder = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    public int test = 5;
+
+    public int[] Rotations = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    public int[] GateOrder = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     //add UI for questions
 
-    void Start()
+    void Awake()
     {
         ShuffleGates(GateOrder);
 
@@ -42,6 +44,8 @@ public class Gate_Loader : MonoBehaviour
 
     private void InstantiateGatePrefabs(bool isGatesInstantiated)
     {
+        GameObject gate;
+
         if (!isGatesInstantiated)
         {
             int posGates = 0;
@@ -53,11 +57,13 @@ public class Gate_Loader : MonoBehaviour
                 {
                     if (Rotations[i] == 0)
                     {
-                        Instantiate(PositiveGatePrefabs[posGates], Gates[i].transform.position, Quaternion.identity);
+                        gate = Instantiate(PositiveGatePrefabs[posGates], Gates[i].transform.position, Quaternion.identity);
+                        gate.transform.parent = transform;
                     }
                     else
                     {
-                        Instantiate(PositiveGatePrefabs[posGates], Gates[i].transform.position, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
+                        gate = Instantiate(PositiveGatePrefabs[posGates], Gates[i].transform.position, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
+                        gate.transform.parent = transform;
                     }
 
                     posGates++;
@@ -66,18 +72,23 @@ public class Gate_Loader : MonoBehaviour
                 {
                     if (Rotations[i] == 0)
                     {
-                        Instantiate(NegativeGatePrefabs[negGates], Gates[i].transform.position, Quaternion.identity);
+                        gate = Instantiate(NegativeGatePrefabs[negGates], Gates[i].transform.position, Quaternion.identity);
+                        gate.transform.parent = transform;
                     }
                     else
                     {
-                        Instantiate(NegativeGatePrefabs[negGates], Gates[i].transform.position, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
+                        gate = Instantiate(NegativeGatePrefabs[negGates], Gates[i].transform.position, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
+                        gate.transform.parent = transform;
                     }
 
                     negGates++;
                 }
             }
+
+            
         }
         isGatesInstantiated = true;
+        
     }
 
 
