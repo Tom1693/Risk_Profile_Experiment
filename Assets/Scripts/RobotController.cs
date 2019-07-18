@@ -42,13 +42,52 @@ public class RobotController : MonoBehaviour
         if (curSpeed == 0)
         {
             GetDecision();
-            transform.LookAt(goal); //look forwards
+            RotateForwards();
+            //transform.LookAt(goal); //look forwards
         }
 
         if (gateCounter >= 1) // if we're not at the beginning of the level
         {
             MoveToWaypoint();
         }
+
+    }
+
+    void RotateForwards()
+    {
+        float rotSpeed = 75f;
+
+        // The step size is equal to speed times frame time.
+        var step = rotSpeed * Time.deltaTime;
+
+        // Rotate our transform a step closer to the target's.
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, goal.rotation, step);
+
+        float angleDiff = transform.rotation.y - goal.rotation.y;
+        float angleDiffDeg = angleDiff * 180 / Mathf.PI;
+
+        if(angleDiffDeg < 90 && angleDiffDeg != 0)
+        {
+            float offset = Time.time * rotSpeed/25;
+
+            trackLeft.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+            trackRight.material.SetTextureOffset("_MainTex", new Vector2(-offset, 0));
+
+            engineSound.volume = 0.1f;
+            engineSound.pitch = 1.5f;
+        }
+        else if(angleDiffDeg > 90 && angleDiffDeg != 0)
+        {
+            float offset = Time.time * rotSpeed/25;
+
+            trackLeft.material.SetTextureOffset("_MainTex", new Vector2(-offset, 0));
+            trackRight.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+
+            engineSound.volume = 0.1f;
+            engineSound.pitch = 1.5f;
+        }
+
+        //print(angleDiff*180/Mathf.PI);
 
     }
 
