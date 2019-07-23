@@ -53,7 +53,7 @@ public class Gate_Loader : MonoBehaviour
 
             for (int i = 0; i < GateOrder.Length; i++)
             {
-                if (GateOrder[i] % 2 == 0) //if even
+                if (GateOrder[i] % 2 == 0) //if even load a positive gate
                 {
                     if (Rotations[i] == 0)
                     {

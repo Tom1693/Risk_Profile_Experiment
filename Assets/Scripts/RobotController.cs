@@ -87,8 +87,6 @@ public class RobotController : MonoBehaviour
             engineSound.pitch = 1.5f;
         }
 
-        //print(angleDiff*180/Mathf.PI);
-
     }
 
     private void AnimateTracks()
