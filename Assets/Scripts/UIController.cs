@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,9 +9,18 @@ public class UIController : MonoBehaviour
     [SerializeField] Gate_Loader loadedGates;
     [SerializeField] GameObject UI;
     [SerializeField] RobotController robot;
+    [SerializeField] ScoreKeeper scoreKeeper;
+
+    [SerializeField] Text scoreText;
     [SerializeField] Text leftText;
     [SerializeField] Text rightText;
-    [SerializeField] Button leftButton;
+
+    [SerializeField] QuestionFurtherButton questionFurtherButton;
+    [SerializeField] QuestionButton questionButton;
+    [SerializeField] AcceptDecisionButton acceptDecisionButton;
+    [SerializeField] AlterDecisionButton alterDecisionButton;
+
+    
 
     public int gateCounter = 0;
     int currentGate = 0;
@@ -25,7 +35,7 @@ public class UIController : MonoBehaviour
         "0.1% chance of viewing area of size 5,000m\u00B2\n99.9% chance of viewing area of size 0m\u00B2",
         "0.1% chance of irradiation measuring 5,500μSv\n99.9% chance of irradiation measuring 0μSv",
         "50% chance of viewing area of size 1,200m\u00B2\n50% chance of viewing area of size 0m\u00B2\n",
-        "50% chance of irradiation measuring 1,100μSv\n20% chance of irradiation measuring 0μSv",
+        "50% chance of irradiation measuring 1,100μSv\n50% chance of irradiation measuring 0μSv",
         "80% chance of viewing area of size 2,000m\u00B2\n20% chance of viewing area of size 0m\u00B2\n",
         "80% chance of irradiation measuring 2,200μSv\n20% chance of irradiation measuring 0μSv"
     };
@@ -44,18 +54,88 @@ public class UIController : MonoBehaviour
         "100% chance of irradiation measuring 1650μSv"
     };
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        DisplayRisk();
+        if (gateCounter <= 10)
+        {
+            DisplayRisk();
+            RefreshButtons();
+            ToggleUI();
+            ShowRobotChoice();
+            DisplayScore();
+        }
 
-        ToggleUI();
+        
+    }
+
+    private void DisplayScore()
+    {
+        scoreText.text = scoreKeeper.score.ToString();
+    }
+
+    private void ShowRobotChoice()
+    {
+        if (robot.curSpeed <= 0)
+        {
+
+
+            int decision = robot.robotGateDecisions[gateCounter, robot.RobotProfile];
+
+            Image rightPanel = GameObject.Find("Right Text Panel").GetComponent<Image>();
+            Image leftPanel = GameObject.Find("Left Text Panel").GetComponent<Image>();
+
+            Image rightPanelRobot = GameObject.Find("Right Panel Image").GetComponent<Image>();
+            Image leftPanelRobot = GameObject.Find("Left Panel Image").GetComponent<Image>();
+
+            Color choiceColour = new Color((165f / 255f), (246f / 255f), (255f / 255f), (223f / 255f));
+            Color notChoiceColour = new Color(1f, 1f, 1f, (223f / 255f));
+
+            if (currentGateRotation == 0 && decision == 0)
+            {
+                leftPanel.color = choiceColour;
+                leftPanelRobot.enabled = true;
+
+                rightPanel.color = notChoiceColour;
+                rightPanelRobot.enabled = false;
+            }
+            else if (currentGateRotation == 0 && decision == 1)
+            {
+                rightPanel.color = choiceColour;
+                rightPanelRobot.enabled = true;
+
+                leftPanel.color = notChoiceColour;
+                leftPanelRobot.enabled = false;
+            }
+            else if (currentGateRotation == 1 && decision == 0)
+            {
+                rightPanel.color = choiceColour;
+                rightPanelRobot.enabled = true;
+
+                leftPanel.color = notChoiceColour;
+                leftPanelRobot.enabled = false;
+            }
+            else if (currentGateRotation == 1 && decision == 1)
+            {
+                leftPanel.color = choiceColour;
+                leftPanelRobot.enabled = true;
+
+                rightPanel.color = notChoiceColour;
+                rightPanelRobot.enabled = false;
+            }
+        }
+    }
+
+    private void RefreshButtons()
+    {
+        if (robot.curSpeed != 0)
+        {
+            questionButton.SetText("Question the Robot");
+            questionFurtherButton.SetText("Question the Robot Further");
+            acceptDecisionButton.SetText("Accept Robot Decision");
+            alterDecisionButton.SetText("Alter Robot Decision");
+        }
     }
 
     private void DisplayRisk()
@@ -75,12 +155,6 @@ public class UIController : MonoBehaviour
             {
                 leftText.text = gateQuestionsB[currentGate];
                 rightText.text = gateQuestionsA[currentGate];
-            }
-
-
-            if (Input.GetKeyDown("u") || Input.GetKeyDown("c"))
-            {
-                gateCounter++;
             }
         }
     }

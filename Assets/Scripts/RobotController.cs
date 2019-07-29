@@ -3,11 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class RobotController : MonoBehaviour
 {
+
+    //defines the robot profile:
+        // 0 = risk averse
+        // 1 = risk seeking
+        // 2 = expected value
+        // 3 = human approach
+    public int RobotProfile = 3; 
+
+
     [SerializeField] Transform goal;
     [SerializeField] AudioSource engineSound;
+    [SerializeField] UIController UI;
 
     public Camera cam;
     public NavMeshAgent agent;
@@ -22,6 +33,36 @@ public class RobotController : MonoBehaviour
     public float prevSpeed;
 
     int gateCounter = 0;
+
+    //1 = certain route
+    //0 = uncertain route
+
+    public int[,] robotGateDecisions = new int[10, 4] {
+       { 1, 0, 0, 1 },
+       { 1, 0, 1, 0 },
+       { 1, 0, 0, 1 },
+       { 1, 0, 1, 0 },
+       { 1, 0, 2, 0 },
+       { 1, 0, 2, 1 },
+       { 1, 0, 0, 1 },
+       { 1, 0, 1, 0 },
+       { 1, 0, 0, 1 },
+       { 1, 0, 1, 0 },
+       };
+
+
+
+    void Awake()
+    {
+      // rand is to decided between even chances when the engine runs
+        int rnd1 = UnityEngine.Random.Range(0, 2);
+        int rnd2 = UnityEngine.Random.Range(0, 2);
+
+        robotGateDecisions[4, 3] = rnd1;
+        robotGateDecisions[5, 3] = rnd2;
+
+    }
+
 
 
     Vector3[,] fullWaypointsList = new Vector3[10,3];
@@ -43,7 +84,6 @@ public class RobotController : MonoBehaviour
         {
             GetDecision();
             RotateForwards();
-            //transform.LookAt(goal); //look forwards
         }
 
         if (gateCounter >= 1) // if we're not at the beginning of the level
@@ -52,6 +92,43 @@ public class RobotController : MonoBehaviour
         }
 
     }
+
+    void ReceivedMessageAlter()
+    {
+        int decision = robotGateDecisions[gateCounter, RobotProfile];
+        print("Alter Clicked");
+
+        decision = AlterDecision(decision);
+
+        currentWaypoint = fullWaypointsList[gateCounter, decision];
+        gateCounter++;
+        UI.gateCounter++;
+    }
+
+    private int AlterDecision(int decision)
+    {
+        if (decision == 1)
+        {
+            decision = 0;
+        }
+        else if (decision == 0)
+        {
+            decision = 1;
+        }
+
+        return decision;
+    }
+
+    void ReceivedMessageAccept()
+    {
+        int decision = robotGateDecisions[gateCounter, RobotProfile];
+        print("Accept Clicked");
+        currentWaypoint = fullWaypointsList[gateCounter, decision];
+
+        gateCounter++;
+        UI.gateCounter++;
+    }
+
 
     void RotateForwards()
     {

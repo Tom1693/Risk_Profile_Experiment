@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestionButton : MonoBehaviour
+
+public class QuestionFurtherButton : MonoBehaviour
 {
     [SerializeField] Gate_Loader loadedGates;
     [SerializeField] UIController gateCount;
@@ -15,22 +16,22 @@ public class QuestionButton : MonoBehaviour
 
     string[] gateResponses =
 {
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9"
+        "0F",
+        "1F",
+        "2F",
+        "3F",
+        "4F",
+        "5F",
+        "6F",
+        "7F",
+        "8F",
+        "9F"
     };
 
     public void ProcessButtonPush()
     {
         gateCounter = gateCount.gateCounter;
-        currentGate = loadedGates.GateOrder[gateCounter];
+        currentGate = loadedGates.GateOrder[gateCounter]; 
         SetText(gateResponses[currentGate]);
     }
 
@@ -42,7 +43,7 @@ public class QuestionButton : MonoBehaviour
 
         if (currentButtonText != currentGate.ToString())
         {
-            SetText("Question the Robot");
+            SetText("Question the Robot Further");
         }
     }
 

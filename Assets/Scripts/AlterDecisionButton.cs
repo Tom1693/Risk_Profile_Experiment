@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestionButton : MonoBehaviour
+
+public class AlterDecisionButton : MonoBehaviour
 {
     [SerializeField] Gate_Loader loadedGates;
     [SerializeField] UIController gateCount;
+    [SerializeField] GameObject robot;
+    [SerializeField] ScoreKeeper scoreKeeper;
 
+    //bool isPushed = false;
     int currentGate = 0;
     int currentGateRotation = 0;
     int gateCounter = 0;
@@ -15,22 +19,24 @@ public class QuestionButton : MonoBehaviour
 
     string[] gateResponses =
 {
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9"
+        "0Alt",
+        "1Alt",
+        "2Alt",
+        "3Alt",
+        "4Alt",
+        "5Alt",
+        "6Alt",
+        "7Alt",
+        "8Alt",
+        "9Alt"
     };
 
     public void ProcessButtonPush()
     {
+        robot.SendMessage("ReceivedMessageAlter");
+        scoreKeeper.SendMessage("ReceivedMessageAlter");
         gateCounter = gateCount.gateCounter;
-        currentGate = loadedGates.GateOrder[gateCounter];
+        currentGate = loadedGates.GateOrder[gateCounter]; 
         SetText(gateResponses[currentGate]);
     }
 
@@ -42,7 +48,7 @@ public class QuestionButton : MonoBehaviour
 
         if (currentButtonText != currentGate.ToString())
         {
-            SetText("Question the Robot");
+            SetText("Question the Robot Further");
         }
     }
 

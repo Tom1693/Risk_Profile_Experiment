@@ -31,7 +31,6 @@ public class Gate_Loader : MonoBehaviour
 
         //updates navmesh
         surface.BuildNavMesh();
-
     }
 
     private void GenerateRandomRotations()
