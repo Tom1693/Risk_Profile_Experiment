@@ -12,6 +12,7 @@ public class QuestionButton : MonoBehaviour
     int currentGateRotation = 0;
     int gateCounter = 0;
     public string currentButtonText;
+    public bool isPushed = false;
 
 
     string[,] gateResponses =
@@ -45,9 +46,11 @@ public class QuestionButton : MonoBehaviour
             gateCounter = gateCount.gateCounter;
             currentGate = loadedGates.GateOrder[gateCounter];
             SetText(gateResponses[currentGate, robot.RobotProfile]);
+            isPushed = true;
         }
         else
         {
+            isPushed = true;
             SetText("Questioning the robot gives a brief overview of why it made it's choice. Once you have questioned the robot you may question it further, at any point you can accept or alter the robot's current decision by pressing the button's to the right");
         }
 
@@ -62,6 +65,7 @@ public class QuestionButton : MonoBehaviour
         if (currentButtonText != currentGate.ToString())
         {
             SetText("Question the Robot");
+            isPushed = false;
         }
     }
 

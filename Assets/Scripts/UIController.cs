@@ -148,6 +148,7 @@ public class UIController : MonoBehaviour
         if (robot.curSpeed != 0)
         {
             questionButton.SetText("Question the Robot");
+            questionButton.isPushed = false;
             questionFurtherButton.SetText("Question the Robot Further");
             acceptDecisionButton.SetText("Accept Robot Decision");
             alterDecisionButton.SetText("Alter Robot Decision");

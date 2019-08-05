@@ -9,6 +9,7 @@ public class QuestionFurtherButton : MonoBehaviour
     [SerializeField] Gate_Loader loadedGates;
     [SerializeField] UIController gateCount;
     [SerializeField] RobotController robot;
+    [SerializeField] QuestionButton questionButton;
 
     int currentGate = 0;
     int currentGateRotation = 0;
@@ -61,17 +62,16 @@ public class QuestionFurtherButton : MonoBehaviour
 
 public void ProcessButtonPush()
     {
-        if (!gateCount.isTutorial)
+        if (!gateCount.isTutorial && questionButton.isPushed)
         {
             gateCounter = gateCount.gateCounter;
             currentGate = loadedGates.GateOrder[gateCounter];
             SetText(gateResponses[currentGate, robot.RobotProfile]);
         }
-        else
+        else if(questionButton.isPushed)
         {
             SetText("Questioning the robot further will allow further insight into how the robot has come to it's decision. After having questioned it further you may accept or alter its decision");
         }
-
     }
 
 
