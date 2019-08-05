@@ -13,12 +13,14 @@ public class RobotController : MonoBehaviour
         // 1 = risk seeking
         // 2 = expected value
         // 3 = human approach
-    public int RobotProfile = 3; 
-
+    public int RobotProfile = 0;
 
     [SerializeField] Transform goal;
     [SerializeField] AudioSource engineSound;
     [SerializeField] UIController UI;
+
+    Vector3[,] fullWaypointsList = new Vector3[10, 3];
+    public Vector3 currentWaypoint = new Vector3();
 
     public Camera cam;
     public NavMeshAgent agent;
@@ -26,7 +28,6 @@ public class RobotController : MonoBehaviour
 
     public Renderer trackLeft;
     public Renderer trackRight;
-
 
     private Vector3 previousPosition;
     public float curSpeed;
@@ -58,15 +59,11 @@ public class RobotController : MonoBehaviour
         int rnd1 = UnityEngine.Random.Range(0, 2);
         int rnd2 = UnityEngine.Random.Range(0, 2);
 
-        robotGateDecisions[4, 3] = rnd1;
+        robotGateDecisions[4, 3] = rnd1; 
         robotGateDecisions[5, 3] = rnd2;
 
     }
 
-
-
-    Vector3[,] fullWaypointsList = new Vector3[10,3];
-    Vector3 currentWaypoint = new Vector3();
 
     void Start()
     {

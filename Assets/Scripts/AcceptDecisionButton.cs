@@ -17,27 +17,13 @@ public class AcceptDecisionButton : MonoBehaviour
     int gateCounter = 0;
     public string currentButtonText;
 
-    string[] gateResponses =
-{
-        "0A",
-        "1A",
-        "2A",
-        "3A",
-        "4A",
-        "5A",
-        "6A",
-        "7A",
-        "8A",
-        "9A"
-    };
-
     public void ProcessButtonPush()
     {
             robot.SendMessage("ReceivedMessageAccept");
             scoreKeeper.SendMessage("ReceivedMessageAccept");
             gateCounter = gateCount.gateCounter;
             currentGate = loadedGates.GateOrder[gateCounter];
-            SetText(gateResponses[currentGate]);
+            SetText("Accepted");
     }
 
 
@@ -50,11 +36,6 @@ public class AcceptDecisionButton : MonoBehaviour
         {
             SetText("Question the Robot Further");
         }
-    }
-
-    void GiveAnswer()
-    {
-        //TODO:: Change the answer based on the robot profile
     }
 
     public void SetText(string text)

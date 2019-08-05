@@ -17,27 +17,13 @@ public class AlterDecisionButton : MonoBehaviour
     int gateCounter = 0;
     public string currentButtonText;
 
-    string[] gateResponses =
-{
-        "0Alt",
-        "1Alt",
-        "2Alt",
-        "3Alt",
-        "4Alt",
-        "5Alt",
-        "6Alt",
-        "7Alt",
-        "8Alt",
-        "9Alt"
-    };
-
     public void ProcessButtonPush()
     {
         robot.SendMessage("ReceivedMessageAlter");
         scoreKeeper.SendMessage("ReceivedMessageAlter");
         gateCounter = gateCount.gateCounter;
         currentGate = loadedGates.GateOrder[gateCounter]; 
-        SetText(gateResponses[currentGate]);
+        SetText("Altered");
     }
 
 
@@ -50,11 +36,6 @@ public class AlterDecisionButton : MonoBehaviour
         {
             SetText("Question the Robot Further");
         }
-    }
-
-    void GiveAnswer()
-    {
-        //TODO:: Change the answer based on the robot profile
     }
 
     public void SetText(string text)

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    public bool isTutorial = false;
+
     [SerializeField] Gate_Loader loadedGates;
     [SerializeField] GameObject UI;
     [SerializeField] RobotController robot;
@@ -21,7 +23,6 @@ public class UIController : MonoBehaviour
     [SerializeField] AlterDecisionButton alterDecisionButton;
 
     
-
     public int gateCounter = 0;
     int currentGate = 0;
     int currentGateRotation = 0;
@@ -42,25 +43,33 @@ public class UIController : MonoBehaviour
 
     string[] gateQuestionsB =
     {
-        "100% chance of viewing area of size 1,920m\u00B2",
-        "100% chance of irradiation measuring 2,304μSv",
-        "100% chance of viewing area of size 2,400m\u00B2",
-        "100% chance of irradiation measuring 1,920μSv",
-        "0.2% chance of viewing area of size 2,500m\u00B2\n99.8% chance of viewing area of size 0m\u00B2",
-        "0.2% chance of irradiation measuring 2,750μSv\n99.8% chance of irradiation measuring 0μSv",
-        "100% chance of viewing area of size 540m\u00B2",
-        "100% chance of irradiation measuring 495μSv",
-        "100% chance of viewing area of size 1500m\u00B2",
-        "100% chance of irradiation measuring 1650μSv"
+        "100% chance of viewing area of size 1,920m\u00B2", //0
+        "100% chance of irradiation measuring 2,304μSv", //1
+        "100% chance of viewing area of size 2,400m\u00B2", //2
+        "100% chance of irradiation measuring 1,920μSv", //3
+        "0.2% chance of viewing area of size 2,500m\u00B2\n99.8% chance of viewing area of size 0m\u00B2", //4
+        "0.2% chance of irradiation measuring 2,750μSv\n99.8% chance of irradiation measuring 0μSv",//5
+        "100% chance of viewing area of size 540m\u00B2",//6
+        "100% chance of irradiation measuring 495μSv",//7
+        "100% chance of viewing area of size 1500m\u00B2",//8
+        "100% chance of irradiation measuring 1650μSv"//9
     };
 
 
     // Update is called once per frame
     void Update()
     {
-        if (gateCounter <= 10)
+        if (gateCounter <= 10 && !isTutorial)
         {
             DisplayRisk();
+            RefreshButtons();
+            ToggleUI();
+            ShowRobotChoice();
+            DisplayScore();
+        }
+        else if (isTutorial)
+        {
+            DisplayTutorialRisk();
             RefreshButtons();
             ToggleUI();
             ShowRobotChoice();
@@ -72,16 +81,23 @@ public class UIController : MonoBehaviour
 
     private void DisplayScore()
     {
-        scoreText.text = scoreKeeper.score.ToString();
+        if (isTutorial)
+        {
+            scoreText.text = "You score will display here at the end of the round";
+        }
+        else
+        {
+            scoreText.text = "Score: " + scoreKeeper.score.ToString();
+        }
+
+        
     }
 
     private void ShowRobotChoice()
     {
         if (robot.curSpeed <= 0)
         {
-
-
-            int decision = robot.robotGateDecisions[gateCounter, robot.RobotProfile];
+            int decision = robot.robotGateDecisions[currentGate, robot.RobotProfile];
 
             Image rightPanel = GameObject.Find("Right Text Panel").GetComponent<Image>();
             Image leftPanel = GameObject.Find("Left Text Panel").GetComponent<Image>();
@@ -158,6 +174,30 @@ public class UIController : MonoBehaviour
             }
         }
     }
+
+    private void DisplayTutorialRisk()
+    {
+        string[] evenText = {"This is where the first option will be displayed, for example:\n\n70% chance of viewing area of size 6,400m\u00B2\n30% chance of viewing area of size 0m\u00B2\n\nViewing area is associated with a positive score, and will add to your total score as the robot moves through the environment",
+        "This is where the opposing option will be displayed, for example:\n\n100% chance of viewing area of size 4,800m\u00B2\n\nThe robot's choice will be highlighted blue, along with a small image of the robot."};
+        string[] oddText = {"Here is an example of a negative choice:\n\n70% chance of irradiation measuring 5,000μSv\n30% chance of irradiation measuring 0μSv\n\nIrradiation is associated with a negative score and will subtract from your score as the robot moves through the environment",
+        "As before, this is where the opposing option will be displayed, in this example:\n\n100% chance of of irradiation measuring 3,500μSv\n\nAs before, the robot's choice will be highlighted blue, along with a small image of the robot."};
+
+        if (robot.curSpeed <= 0)
+        {
+            if(gateCounter%2 == 0)
+            {
+                leftText.text = evenText[0];
+                rightText.text = evenText[1];
+            }
+            else
+            {
+                leftText.text = oddText[0];
+                rightText.text = oddText[1];
+            }
+        }
+    }
+    
+
 
     private void ToggleUI()
     {

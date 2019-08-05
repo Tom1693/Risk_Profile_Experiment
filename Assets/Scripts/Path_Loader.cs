@@ -16,7 +16,7 @@ public class Path_Loader : MonoBehaviour
     public Vector3[,] fullWaypointsList = new Vector3[10, 3];
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         int[] Rotations = loadedGates.Rotations;
 

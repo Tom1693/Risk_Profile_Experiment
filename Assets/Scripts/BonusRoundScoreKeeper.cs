@@ -1,21 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ScoreKeeper : MonoBehaviour
+public class BonusRoundScoreKeeper : MonoBehaviour
 {
-    [SerializeField] RobotController robot;
+    [SerializeField] BonusRoundRobotController robot;
     [SerializeField] Gate_Loader loadedGates;
-    [SerializeField] UIController ui;
+    [SerializeField] Text scoreText;
 
     public float score;
     int currentGate;
+    int previousGate = 50;
     int random;
     int robotDecision;
-    int gateCount;
+    int gateCount = 0;
     int robotProfile;
     float gateScore;
     float[] valuePicker = new float[1000];
+    float distance;
 
     //666 = null value
     float[,] scoresA =
@@ -79,56 +82,38 @@ public class ScoreKeeper : MonoBehaviour
 
     private void Update()
     {
-        gateCount = ui.gateCounter;
-        currentGate = loadedGates.GateOrder[gateCount];
+        currentGate = loadedGates.GateOrder[robot.gateCounter];
+        //print("currentGate = " + currentGate);
 
         robotProfile = robot.RobotProfile;
         robotDecision = robot.robotGateDecisions[currentGate, robotProfile];
 
-        if(robotDecision == 2)
-        {
-            // rand is to decided between even chances when the engine runs
-            int rnd1 = UnityEngine.Random.Range(0, 2);
+        scoreText.text = score.ToString();
 
-            robotDecision = rnd1;
+        if (previousGate != currentGate)
+        {
+            AddToScore();
         }
 
-    }
+        previousGate = currentGate;
+        //print("previousGate = " + previousGate);
 
-    void ReceivedMessageAccept()
-    {
-        AddToScore();
-    }
 
-    void ReceivedMessageAlter()
-    {
-        robotDecision = AlterDecision(robotDecision);
-        AddToScore();
+
+
     }
 
     void AddToScore()
     {
+        print("Score Keeper Called");
         gateScore = CalculateGateScore();
-        score = score + gateScore;
-    }
-
-    private int AlterDecision(int decision)
-    {
-        if (decision == 1)
-        {
-            decision = 0;
-        }
-        else if (decision == 0)
-        {
-            decision = 1;
-        }
-
-        return decision;
+        print("gateScore =" + gateScore);
+        score = score + (gateScore);
     }
 
     private float CalculateGateScore()
     {
-        float firstOutcomeA = scoresA[currentGate,0];
+        float firstOutcomeA = scoresA[currentGate, 0];
         float firstProbA = 1000 * probA[currentGate, 0];
 
         float secondOutcomeA = scoresA[currentGate, 1];
@@ -147,12 +132,10 @@ public class ScoreKeeper : MonoBehaviour
         int p = 0;
         int j = 0;
 
-        print("Decision - " + robotDecision);
-
         if (robotDecision == 0)
         {
             random = Random.Range(0, 1000);
-            if(thirdOutcomeA != 666)
+            if (thirdOutcomeA != 666)
             {
                 for (i = 0; i < firstProbA; i++)
                 {
@@ -213,89 +196,6 @@ public class ScoreKeeper : MonoBehaviour
             return (88888888);
         }
 
-       /* print("Random number = " + random);
-        print("Value chosen = " + valuePicker[random]);
-        print("Value at 0 = " + valuePicker[0] + " Value at 500 = " + valuePicker[499] + " Value at end = " + valuePicker[999]);*/
-
         return valuePicker[random];
     }
-
-
-
-
-
-
-    /*if (robotDecision == 0)
-    {
-        random = Random.Range(0, 1000);
-        print("0 - " + random);
-        if (thirdProbA == 666000)
-        {
-            if (random >= 0 && random < thirdProbA)
-            {
-                return (thirdOutcomeA);
-            }
-            else if (random >= thirdProbA && random < secondProbA + thirdProbA)
-            {
-                return (secondOutcomeA);
-            }
-            else if (random > secondProbA + thirdProbA && random <= firstProbA + secondProbA + thirdProbA)
-            {
-                return (firstOutcomeA);
-            }
-            else
-            {
-                print("error in scorekeeper decision 0.0");
-                return (88888888);
-            }
-        }
-        else
-        {
-            if (random >= 0 && random < secondProbA)
-            {
-                return (firstOutcomeA);
-            }
-            else if (random >= secondProbA && random < firstProbA + secondProbA)
-            {
-                return (secondOutcomeA);
-            }
-            else
-            {
-                print("error in scorekeeper decision 0.1");
-                return (88888888);
-            }
-        }
-
-    }
-    else if (robotDecision == 1)
-    {
-        random = Random.Range(0, 1000);
-        print("1 - " + random);
-        if (secondProbB == 666000)
-        {
-            if (random >= 0 && random < firstProbB)
-            {
-                return (firstOutcomeB);  
-            }
-            else if (random >= secondProbA && random < firstProbB + secondProbB)
-            {
-                return (secondOutcomeB);
-            }
-            else
-            {
-                print("error in scorekeeper decision 1");
-                return (88888888);
-            }
-        }
-        else
-        {
-            return (firstOutcomeB);
-        }
-    }
-    else
-    {
-        print("error in scorekeeper end");
-        return (88888888);
-    }
-}*/
 }

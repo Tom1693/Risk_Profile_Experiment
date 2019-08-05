@@ -1606,7 +1606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 246, y: -77.9}
+  m_AnchoredPosition: {x: 246, y: -56.9}
   m_SizeDelta: {x: 420.6, y: 96.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &127177706
@@ -2386,7 +2386,7 @@ MonoBehaviour:
   UI: {fileID: 1106794204}
   robot: {fileID: 398126678}
   endScreen: {fileID: 1594852078}
-  scoreText: {fileID: 1023308322}
+  scoreText: {fileID: 0}
 --- !u!1 &198084981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,7 +2424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 246, y: -189}
+  m_AnchoredPosition: {x: 246, y: -168}
   m_SizeDelta: {x: 420.6, y: 96.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &198084983
@@ -12861,7 +12861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1023308323
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12878,8 +12878,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -32}
-  m_SizeDelta: {x: 260.4, y: 79.600006}
+  m_AnchoredPosition: {x: 15.2, y: -48}
+  m_SizeDelta: {x: 415.6, y: 78.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1023308324
 MonoBehaviour:
@@ -14093,7 +14093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2c368d6e950d74ead5115c78a14496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTutorial: 0
+  isTutorial: 1
   loadedGates: {fileID: 928599351}
   UI: {fileID: 1305507509}
   robot: {fileID: 398126678}
@@ -16603,7 +16603,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -26}
   m_SizeDelta: {x: 1148, y: 554}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1311094141
@@ -20302,7 +20302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 122}
+  m_AnchoredPosition: {x: 0, y: 96}
   m_SizeDelta: {x: 391.09998, y: 173.79999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1594852080
@@ -28201,11 +28201,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Robot
-      objectReference: {fileID: 0}
-    - target: {fileID: 7347101956382385790, guid: d6cfa77b0cf93b948b09e97c9ad399f6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7347101956382385789, guid: d6cfa77b0cf93b948b09e97c9ad399f6,
         type: 3}
