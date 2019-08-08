@@ -10,6 +10,8 @@ public class AcceptDecisionButton : MonoBehaviour
     [SerializeField] UIController gateCount;
     [SerializeField] GameObject robot;
     [SerializeField] ScoreKeeper scoreKeeper;
+    [SerializeField] DataLogger data;
+    [SerializeField] bool isTutorial = false;
 
     bool isPushed = false;
     int currentGate = 0;
@@ -19,12 +21,20 @@ public class AcceptDecisionButton : MonoBehaviour
 
     public void ProcessButtonPush()
     {
-            robot.SendMessage("ReceivedMessageAccept");
-            scoreKeeper.SendMessage("ReceivedMessageAccept");
-            gateCounter = gateCount.gateCounter;
-            currentGate = loadedGates.GateOrder[gateCounter];
-            SetText("Accepted");
-    }
+        robot.SendMessage("ReceivedMessageAccept");
+        scoreKeeper.SendMessage("ReceivedMessageAccept");
+
+        if (!isTutorial)
+        {
+            data.SendMessage("WriteDecisionAccepted");
+            data.SendMessage("WriteGateNumber");
+        }
+
+
+        gateCounter = gateCount.gateCounter;
+        currentGate = loadedGates.GateOrder[gateCounter];
+        SetText("Accepted");
+}
 
 
     private void RefreshButton()

@@ -18,6 +18,7 @@ public class RobotController : MonoBehaviour
     [SerializeField] Transform goal;
     [SerializeField] AudioSource engineSound;
     [SerializeField] UIController UI;
+    [SerializeField] Gate_Loader loadedGates;
 
     Vector3[,] fullWaypointsList = new Vector3[10, 3];
     public Vector3 currentWaypoint = new Vector3();
@@ -32,6 +33,8 @@ public class RobotController : MonoBehaviour
     private Vector3 previousPosition;
     public float curSpeed;
     public float prevSpeed;
+
+    int currentGate = 0;
 
     int gateCounter = 0;
 
@@ -79,7 +82,6 @@ public class RobotController : MonoBehaviour
 
         if (curSpeed == 0)
         {
-            GetDecision();
             RotateForwards();
         }
 
@@ -92,8 +94,8 @@ public class RobotController : MonoBehaviour
 
     void ReceivedMessageAlter()
     {
-        int decision = robotGateDecisions[gateCounter, RobotProfile];
-        print("Alter Clicked");
+        currentGate = loadedGates.GateOrder[gateCounter];
+        int decision = robotGateDecisions[currentGate, RobotProfile];
 
         decision = AlterDecision(decision);
 
@@ -118,8 +120,8 @@ public class RobotController : MonoBehaviour
 
     void ReceivedMessageAccept()
     {
-        int decision = robotGateDecisions[gateCounter, RobotProfile];
-        print("Accept Clicked");
+        currentGate = loadedGates.GateOrder[gateCounter];
+        int decision = robotGateDecisions[currentGate, RobotProfile];
         currentWaypoint = fullWaypointsList[gateCounter, decision];
 
         gateCounter++;

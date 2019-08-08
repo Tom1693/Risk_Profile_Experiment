@@ -8,6 +8,8 @@ public class QuestionButton : MonoBehaviour
     [SerializeField] Gate_Loader loadedGates;
     [SerializeField] UIController gateCount;
     [SerializeField] RobotController robot;
+    [SerializeField] DataLogger data;
+
     int currentGate = 0;
     int currentGateRotation = 0;
     int gateCounter = 0;
@@ -17,32 +19,54 @@ public class QuestionButton : MonoBehaviour
 
     string[,] gateResponses =
 {
-        {"I chose certainty over a risk, I do not believe the risk is worth the reward", "I believe that the opportunity to gain more justifies the risk",
-            "I believe, in this case, the risk is worth the reward", "I do not believe that the risk is worth the reward"},
-        {"I chose certainty over a risk, I do not believe the risk is worth the reward", "I believe that the opportunity to lose less justifies the risk",
-            "I do not believe that the risk is worth the reward", "I believe, in this case, the risk is worth the reward"},
-        {"I chose certainty over a risk, I do not believe the risk is worth the reward", "I believe that the opportunity to gain more justifies the risk",
-            "I believe, in this case, the risk is worth the reward", "I do not believe that the risk is worth the reward"},
-        {"I chose certainty over a risk, I do not believe the risk is worth the reward", "I believe that the opportunity to lose less justifies the risk",
-            "I do not believe that the risk is worth the reward", "I believe, in this case, the risk is worth the reward"},
-        {"I chose the more certain option over the more risky option", "I chose the option with the higher risk because I could gain more",
-            "I believe that both outcomes are equal so it does not matter which I choose", "I value the opportunity to gain more"},
-        {"I chose the more certain option over the more risky option", "I chose the option with more risk, as there was a higher chance not lose",
-            "I believe that both outcomes are equal so it does not matter which I choose", "I value the more certain chance of losing less"},
-        {"I chose certainty over a risk, I do not believe the risk is worth the reward", "I believe that the opportunity to gain more justifies the risk",
-            "I believe, in this case, the risk is worth the reward", "I do not believe that the risk is worth the reward"},
-        {"I chose certainty over a risk, I do not believe the risk is worth the reward", "I believe that the opportunity to lose less justifies the risk",
-            "I do not believe that the risk is worth the reward", "I believe, in this case, the risk is worth the reward"},
-        {"I chose certainty over a risk, I do not believe the risk is worth the reward", "I believe that the opportunity to gain more justifies the risk",
-            "I believe, in this case, the risk is worth the reward", "I do not believe that the risk is worth the reward"},
-        {"I chose certainty over a risk, I do not believe the risk is worth the reward", "I believe that the opportunity to lose less justifies the risk",
-            "I do not believe that the risk is worth the reward", "I believe, in this case, the risk is worth the reward"},
+         {"I value the risk at 0 and the certain option at 1,920. Therefore I chose certainty over a risk, I do not believe the risk is worth the reward.",
+            "I value the risk at 2,000 and the certain option at 1,920. Therefore I chose the risk over certainty, I believe the risk is worth the reward.",
+                "I value the risk at 1,953 and the certain option at 1,920. Therefore I chose the risk over certainty, I believe the risk is worth the reward.",
+                    "I value the risk at 667 and the certain option at 775. Therefore I chose certainty over risk, I do not believe the risk is worth the reward." },
+        {"I value the risk at -2,400 and the certain option at -2,304. Therefore I chose certainty over a risk, I do not believe the risk is worth the reward.",
+            "I value the risk at 0 and the certain option at -2,304. Therefore I chose the risk over certainty, I believe the risk is worth the reward.",
+                "I value the risk at -2,344 and the certain option at -2,304. Therefore I chose the certain option over the risk, I do not believe the risk is worth the reward.",
+                    "I value the risk at -1,896 and the certain option at -2,047. Therefore I chose to take the risk over the certain loss, I believe the risk is worth the reward." },
+        {"I value the risk at 0 and the certain option at 2,400. Therefore I chose certainty over a risk, I do not believe the risk is worth the reward.",
+            "I value the risk at 3,200 and the certain option at 2,400. Therefore I chose the risk over certainty, I believe the risk is worth the reward.",
+                "I value the risk at 2,560 and the certain option at 2,400. Therefore I chose the risk over certainty, I believe the risk is worth the reward.",
+                    "I value the risk at 737 and the certain option at 943. Therefore I chose certainty over risk, I do not believe the risk is worth the reward." },
+        {"I value the risk at -2,560 and the certain option at -1,920. Therefore I chose certainty over a risk, I do not believe the risk is worth the reward.",
+            "I value the risk at 0 and the certain option at -1,920. Therefore I chose the risk over certainty, I believe the risk is worth the reward.",
+                "I value the risk at -2,048 and the certain option at -1,920. Therefore I chose the certain option over the risk, I do not believe the risk is worth the reward.",
+                    "I value the risk at -1,502 and the certain option at -1,743. Therefore I chose to take the risk over the certain loss, I believe the risk is worth the reward." },
+        {"I value the lower probability option at 0.1 and the higher probability option at 0.2. Therefore I chose the higher probability option.",
+            "I value the lower probability option at 2,500 and the higher probability option at 5,000. Therefore I chose the lower probability option over the higher probability option.",
+                "I value both options at 500. Therefore I do not believe it matters which option I choose.",
+                    "I value the lower probability option at 26 and the higher probability option at 21. Therefore I chose to take the lower probability option." },
+        {"I value the lower probability option at -5,500 and the higher probability option at -2,750. Therefore I chose the higher probability option.",
+            "I value the lower probability option at 99.8 and the higher probability option at 99.9. Therefore I chose the higher probability option over the lower probability option.",
+                "I value both options at -550. Therefore I do not believe it matters which option I choose.",
+                    "I value the lower probability option at -37 and the higher probability option at -32. Therefore I chose to take the higher probability option." },
+        {"I value the risk at 0 and the certain option at 540. Therefore I chose certainty over a risk, I do not believe the risk is worth the reward.",
+            "I value the risk at 1,200 and the certain option at 540. Therefore I chose the risk over certainty, I believe the risk is worth the reward.",
+                "I value the risk at 600 and the certain option at 540. Therefore I chose the risk over certainty, I believe the risk is worth the reward.",
+                    "I value the risk at 215 and the certain option at 253. Therefore I chose certainty over risk, I do not believe the risk is worth the reward." },
+        {"I value the risk at -1,100 and the certain option at -495. Therefore I chose certainty over a risk, I do not believe the risk is worth the reward.",
+            "I value the risk at 0 and the certain option at -495. Therefore I chose the risk over certainty, I believe the risk is worth the reward.",
+                "I value the risk at -550 and the certain option at -495. Therefore I chose the certain option over the risk, I do not believe the risk is worth the reward.",
+                    "I value the risk at -484 and the certain option at -528. Therefore I chose to take the risk over the certain loss, I believe the risk is worth the reward." },
+        {"I value the risk at 0 and the certain option at 1,500. Therefore I chose certainty over a risk, I do not believe the risk is worth the reward.",
+            "I value the risk at 2,000 and the certain option at 1,500. Therefore I chose the risk over certainty, I believe the risk is worth the reward.",
+                "I value the risk at 1,600 and the certain option at 1,500. Therefore I chose the risk over certainty, I believe the risk is worth the reward.",
+                    "I value the risk at 487 and the certain option at 623. Therefore I chose certainty over risk, I do not believe the risk is worth the reward." },
+        {"I value the risk at -2,200 and the certain option at -1,650. Therefore I chose certainty over a risk, I do not believe the risk is worth the reward.",
+            "I value the risk at 0 and the certain option at -1,650. Therefore I chose the risk over certainty, I believe the risk is worth the reward.",
+                "I value the risk at -1,760 and the certain option at -1,650. Therefore I chose the certain option over the risk, I do not believe the risk is worth the reward.",
+                    "I value the risk at -1,314 and the certain option at -1,526. Therefore I chose to take the risk over the certain loss, I believe the risk is worth the reward." }
     };
 
     public void ProcessButtonPush()
     {
         if (!gateCount.isTutorial)
         {
+            data.SendMessage("WriteQuestioned");
+
             gateCounter = gateCount.gateCounter;
             currentGate = loadedGates.GateOrder[gateCounter];
             SetText(gateResponses[currentGate, robot.RobotProfile]);

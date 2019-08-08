@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject UI;
     [SerializeField] RobotController robot;
     [SerializeField] ScoreKeeper scoreKeeper;
+    [SerializeField] DataLogger data;
 
     [SerializeField] Text scoreText;
     [SerializeField] Text leftText;
@@ -22,7 +23,7 @@ public class UIController : MonoBehaviour
     [SerializeField] AcceptDecisionButton acceptDecisionButton;
     [SerializeField] AlterDecisionButton alterDecisionButton;
 
-    
+    float prevSpeed = 0;
     public int gateCounter = 0;
     int currentGate = 0;
     int currentGateRotation = 0;
@@ -64,6 +65,7 @@ public class UIController : MonoBehaviour
             DisplayRisk();
             RefreshButtons();
             ToggleUI();
+            ResetTimer();
             ShowRobotChoice();
             DisplayScore();
         }
@@ -210,5 +212,14 @@ public class UIController : MonoBehaviour
         {
             UI.SetActive(true);
         }
+    }
+
+    void ResetTimer()
+    {
+       if(prevSpeed != robot.curSpeed && robot.curSpeed == 0)
+        {
+            data.SendMessage("ResetTimer");
+        }
+        prevSpeed = robot.curSpeed;
     }
 }

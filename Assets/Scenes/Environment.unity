@@ -1551,7 +1551,9 @@ MonoBehaviour:
   loadedGates: {fileID: 928599351}
   gateCount: {fileID: 1106794204}
   robot: {fileID: 398126678}
+  data: {fileID: 696077712}
   currentButtonText: 
+  isPushed: 0
 --- !u!114 &125170595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2322,7 +2324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 1.7
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -2387,6 +2389,7 @@ MonoBehaviour:
   robot: {fileID: 398126678}
   endScreen: {fileID: 1594852078}
   scoreText: {fileID: 1023308322}
+  data: {fileID: 696077712}
 --- !u!1 &198084981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2442,6 +2445,8 @@ MonoBehaviour:
   loadedGates: {fileID: 928599351}
   gateCount: {fileID: 1106794204}
   robot: {fileID: 398126678}
+  questionButton: {fileID: 125170594}
+  data: {fileID: 696077712}
   currentButtonText: 
 --- !u!114 &198084984
 MonoBehaviour:
@@ -8573,6 +8578,55 @@ Transform:
   m_Father: {fileID: 2034178019}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &696077711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 696077713}
+  - component: {fileID: 696077712}
+  m_Layer: 0
+  m_Name: Data Logger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &696077712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696077711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d831d0fecd05d8943900d5a7b17690c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  partipantID: Test
+  loadedGates: {fileID: 928599351}
+  robot: {fileID: 398126678}
+  score: {fileID: 2028378268}
+  UI: {fileID: 1106794204}
+  isTutorial: 0
+--- !u!4 &696077713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696077711}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &699923163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14098,6 +14152,7 @@ MonoBehaviour:
   UI: {fileID: 1305507509}
   robot: {fileID: 398126678}
   scoreKeeper: {fileID: 2028378268}
+  data: {fileID: 696077712}
   scoreText: {fileID: 1023308324}
   leftText: {fileID: 1887054869}
   rightText: {fileID: 700244568}
@@ -14137,7 +14192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 1.7
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -22348,6 +22403,8 @@ MonoBehaviour:
   gateCount: {fileID: 1106794204}
   robot: {fileID: 398126676}
   scoreKeeper: {fileID: 2028378268}
+  data: {fileID: 696077712}
+  isTutorial: 0
   currentButtonText: 
 --- !u!114 &1720077153
 MonoBehaviour:
@@ -27631,6 +27688,8 @@ MonoBehaviour:
   gateCount: {fileID: 1106794204}
   robot: {fileID: 398126676}
   scoreKeeper: {fileID: 2028378268}
+  data: {fileID: 696077712}
+  isTutorial: 0
   currentButtonText: 
 --- !u!114 &2110212454
 MonoBehaviour:
@@ -28235,8 +28294,13 @@ PrefabInstance:
     - target: {fileID: 7347101956382385789, guid: d6cfa77b0cf93b948b09e97c9ad399f6,
         type: 3}
       propertyPath: RobotProfile
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7347101956382385789, guid: d6cfa77b0cf93b948b09e97c9ad399f6,
+        type: 3}
+      propertyPath: loadedGates
+      value: 
+      objectReference: {fileID: 928599351}
     - target: {fileID: 7347101956382385791, guid: d6cfa77b0cf93b948b09e97c9ad399f6,
         type: 3}
       propertyPath: m_LocalPosition.x

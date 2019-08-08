@@ -9,6 +9,9 @@ public class EndRound : MonoBehaviour
     [SerializeField] RobotController robot;
     [SerializeField] GameObject endScreen;
     [SerializeField] GameObject scoreText;
+    [SerializeField] DataLogger data;
+
+    bool isScoreWritten = false;
 
 
     void Update()
@@ -17,10 +20,21 @@ public class EndRound : MonoBehaviour
         {
             endScreen.SetActive(true);
             scoreText.SetActive(true);
+            SendScore();
         }
         else
         {
             endScreen.SetActive(false);
+        }
+    }
+
+
+    void SendScore()
+    {
+        if (!isScoreWritten)
+        {
+            data.SendMessage("WriteScore");
+            isScoreWritten = true;
         }
     }
 }

@@ -10,6 +10,8 @@ public class AlterDecisionButton : MonoBehaviour
     [SerializeField] UIController gateCount;
     [SerializeField] GameObject robot;
     [SerializeField] ScoreKeeper scoreKeeper;
+    [SerializeField] DataLogger data;
+    [SerializeField] bool isTutorial = false;
 
     //bool isPushed = false;
     int currentGate = 0;
@@ -21,6 +23,14 @@ public class AlterDecisionButton : MonoBehaviour
     {
         robot.SendMessage("ReceivedMessageAlter");
         scoreKeeper.SendMessage("ReceivedMessageAlter");
+
+        if (!isTutorial)
+        {
+            data.SendMessage("WriteDecisionAltered");
+            data.SendMessage("WriteGateNumber");
+        }
+
+
         gateCounter = gateCount.gateCounter;
         currentGate = loadedGates.GateOrder[gateCounter]; 
         SetText("Altered");

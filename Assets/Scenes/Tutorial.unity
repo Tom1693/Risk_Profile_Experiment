@@ -1551,6 +1551,7 @@ MonoBehaviour:
   loadedGates: {fileID: 928599351}
   gateCount: {fileID: 1106794204}
   robot: {fileID: 398126678}
+  data: {fileID: 0}
   currentButtonText: 
   isPushed: 0
 --- !u!114 &125170595
@@ -2388,6 +2389,7 @@ MonoBehaviour:
   robot: {fileID: 398126678}
   endScreen: {fileID: 1594852078}
   scoreText: {fileID: 0}
+  data: {fileID: 0}
 --- !u!1 &198084981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2444,6 +2446,7 @@ MonoBehaviour:
   gateCount: {fileID: 1106794204}
   robot: {fileID: 398126678}
   questionButton: {fileID: 125170594}
+  data: {fileID: 0}
   currentButtonText: 
 --- !u!114 &198084984
 MonoBehaviour:
@@ -8817,7 +8820,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1.096e-42, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 2.1e-44}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -14100,6 +14103,7 @@ MonoBehaviour:
   UI: {fileID: 1305507509}
   robot: {fileID: 398126678}
   scoreKeeper: {fileID: 2028378268}
+  data: {fileID: 0}
   scoreText: {fileID: 1023308324}
   leftText: {fileID: 1887054869}
   rightText: {fileID: 700244568}
@@ -22350,6 +22354,8 @@ MonoBehaviour:
   gateCount: {fileID: 1106794204}
   robot: {fileID: 398126676}
   scoreKeeper: {fileID: 2028378268}
+  data: {fileID: 0}
+  isTutorial: 1
   currentButtonText: 
 --- !u!114 &1720077153
 MonoBehaviour:
@@ -27633,6 +27639,8 @@ MonoBehaviour:
   gateCount: {fileID: 1106794204}
   robot: {fileID: 398126676}
   scoreKeeper: {fileID: 2028378268}
+  data: {fileID: 0}
+  isTutorial: 1
   currentButtonText: 
 --- !u!114 &2110212454
 MonoBehaviour:
@@ -28234,6 +28242,11 @@ PrefabInstance:
       propertyPath: RobotProfile
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7347101956382385789, guid: d6cfa77b0cf93b948b09e97c9ad399f6,
+        type: 3}
+      propertyPath: loadedGates
+      value: 
+      objectReference: {fileID: 928599351}
     - target: {fileID: 7347101956382385791, guid: d6cfa77b0cf93b948b09e97c9ad399f6,
         type: 3}
       propertyPath: m_LocalPosition.x

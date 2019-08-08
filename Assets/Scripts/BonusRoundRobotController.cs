@@ -16,6 +16,7 @@ public class BonusRoundRobotController : MonoBehaviour
     [SerializeField] Transform goal;
     [SerializeField] AudioSource engineSound;
     [SerializeField] BonusRoundScoreKeeper bonusScoreKeeper;
+    [SerializeField] GameObject endScreen;
 
     Vector3[,] fullWaypointsList = new Vector3[10, 3];
     public Vector3[] waypointsToTravel = new Vector3[20];
@@ -63,10 +64,18 @@ public class BonusRoundRobotController : MonoBehaviour
     void Update()
     {
         curSpeed = GetRobotSpeed();
+
+        if (curSpeed == 0)
+        {
+            RotateForwards();
+        }
+
+        DisplayEndScreen();
         PlayEngineNoise(curSpeed);
         AnimateTracks();
         GetCurrentWaypoint();
         MoveToWaypoint();
+        
     }
 
 
@@ -134,24 +143,53 @@ public class BonusRoundRobotController : MonoBehaviour
             engineSound.pitch = 1f;
         }
     }
-    /*void MoveThroughWaypointsBonus()
+
+
+    void DisplayEndScreen()
     {
-        int decision = robotGateDecisions[gateCounter, RobotProfile];
-        currentWaypoint = fullWaypointsList[gateCounter, decision];
-
-        if (gateCounter > 9)
+        if (curSpeed == 0 && waypointCounter > 7)
         {
-            currentWaypoint = fullWaypointsList[9, 2];
+            endScreen.SetActive(true);
+        }
+        else
+        {
+            endScreen.SetActive(false);
+        }
+    }
+
+    void RotateForwards()
+    {
+        float rotSpeed = 75f;
+
+        // The step size is equal to speed times frame time.
+        var step = rotSpeed * Time.deltaTime;
+
+        // Rotate our transform a step closer to the target's.
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, goal.rotation, step);
+
+        float angleDiff = transform.rotation.y - goal.rotation.y;
+        float angleDiffDeg = angleDiff * 180 / Mathf.PI;
+
+        if (angleDiffDeg < 90 && angleDiffDeg != 0)
+        {
+            float offset = Time.time * rotSpeed / 25;
+
+            trackLeft.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+            trackRight.material.SetTextureOffset("_MainTex", new Vector2(-offset, 0));
+
+            engineSound.volume = 0.1f;
+            engineSound.pitch = 1.5f;
+        }
+        else if (angleDiffDeg > 90 && angleDiffDeg != 0)
+        {
+            float offset = Time.time * rotSpeed / 25;
+
+            trackLeft.material.SetTextureOffset("_MainTex", new Vector2(-offset, 0));
+            trackRight.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+
+            engineSound.volume = 0.1f;
+            engineSound.pitch = 1.5f;
         }
 
-        agent.SetDestination(currentWaypoint);
-
-        distance = Vector3.Distance(currentWaypoint, transform.position);
-
-        if (distance < 2)
-        {
-            gateCounter++;
-            bonusScoreKeeper.SendMessage("AddToScore");
-        }
-    }*/
+    }
 }
