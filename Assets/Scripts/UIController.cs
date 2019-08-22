@@ -30,30 +30,30 @@ public class UIController : MonoBehaviour
 
     string[] gateQuestionsA =
     {
-        "66% chance of viewing area of size 2,000m\u00B2\n33% chance of viewing area of size 1,920m\u00B2\n1% chance of viewing area of size 0m\u00B2",
-        "66% chance of irradiation measuring 2,400μSv\n33% chance of irradiation measuring 2,304μSv\n1% chance of irradiation measuring 0μSv",
-        "80% chance of viewing area of size 3,200m\u00B2\n20% chance of viewing area of size 0m\u00B2\n",
-        "80% chance of irradiation measuring 2,560μSv\n20% chance of irradiation measuring 0μSv",
-        "0.1% chance of viewing area of size 5,000m\u00B2\n99.9% chance of viewing area of size 0m\u00B2",
-        "0.1% chance of irradiation measuring 5,500μSv\n99.9% chance of irradiation measuring 0μSv",
-        "50% chance of viewing area of size 1,200m\u00B2\n50% chance of viewing area of size 0m\u00B2\n",
-        "50% chance of irradiation measuring 1,100μSv\n50% chance of irradiation measuring 0μSv",
-        "80% chance of viewing area of size 2,000m\u00B2\n20% chance of viewing area of size 0m\u00B2\n",
-        "80% chance of irradiation measuring 2,200μSv\n20% chance of irradiation measuring 0μSv"
+        "Uncertain Option:\n\n66% chance of viewing area of size 2,000m\u00B2\n33% chance of viewing area of size 1,920m\u00B2\n1% chance of viewing area of size 0m\u00B2",
+        "Uncertain Option:\n\n66% chance of irradiation measuring 2,400μSv\n33% chance of irradiation measuring 2,304μSv\n1% chance of irradiation measuring 0μSv",
+        "Uncertain Option:\n\n80% chance of viewing area of size 3,200m\u00B2\n20% chance of viewing area of size 0m\u00B2\n",
+        "Uncertain Option:\n\n80% chance of irradiation measuring 2,560μSv\n20% chance of irradiation measuring 0μSv",
+        "Less Certain Option:\n\n0.1% chance of viewing area of size 5,000m\u00B2\n99.9% chance of viewing area of size 0m\u00B2",
+        "Less Certain Option:\n\n0.1% chance of irradiation measuring 5,500μSv\n99.9% chance of irradiation measuring 0μSv",
+        "Uncertain Option:\n\n50% chance of viewing area of size 1,200m\u00B2\n50% chance of viewing area of size 0m\u00B2\n",
+        "Uncertain Option:\n\n50% chance of irradiation measuring 1,100μSv\n50% chance of irradiation measuring 0μSv",
+        "Uncertain Option:\n\n80% chance of viewing area of size 2,000m\u00B2\n20% chance of viewing area of size 0m\u00B2\n",
+        "Uncertain Option:\n\n80% chance of irradiation measuring 2,200μSv\n20% chance of irradiation measuring 0μSv"
     };
 
     string[] gateQuestionsB =
     {
-        "100% chance of viewing area of size 1,920m\u00B2", //0
-        "100% chance of irradiation measuring 2,304μSv", //1
-        "100% chance of viewing area of size 2,400m\u00B2", //2
-        "100% chance of irradiation measuring 1,920μSv", //3
-        "0.2% chance of viewing area of size 2,500m\u00B2\n99.8% chance of viewing area of size 0m\u00B2", //4
-        "0.2% chance of irradiation measuring 2,750μSv\n99.8% chance of irradiation measuring 0μSv",//5
-        "100% chance of viewing area of size 540m\u00B2",//6
-        "100% chance of irradiation measuring 495μSv",//7
-        "100% chance of viewing area of size 1500m\u00B2",//8
-        "100% chance of irradiation measuring 1650μSv"//9
+        "Certain Option:\n\n100% chance of viewing area of size 1,920m\u00B2", //0
+        "Certain Option:\n\n100% chance of irradiation measuring 2,304μSv", //1
+        "Certain Option:\n\n100% chance of viewing area of size 2,400m\u00B2", //2
+        "Certain Option:\n\n100% chance of irradiation measuring 1,920μSv", //3
+        "More Certain Option:\n\n0.2% chance of viewing area of size 2,500m\u00B2\n99.8% chance of viewing area of size 0m\u00B2", //4
+        "More Certain Option:\n\n0.2% chance of irradiation measuring 2,750μSv\n99.8% chance of irradiation measuring 0μSv",//5
+        "Certain Option:\n\n100% chance of viewing area of size 540m\u00B2",//6
+        "Certain Option:\n\n100% chance of irradiation measuring 495μSv",//7
+        "Certain Option:\n\n100% chance of viewing area of size 1500m\u00B2",//8
+        "Certain Option:\n\n100% chance of irradiation measuring 1650μSv"//9
     };
 
 

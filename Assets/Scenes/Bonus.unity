@@ -4259,7 +4259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590d36e9734faa94a8cbcc154db9068e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RobotProfile: 1
+  RobotProfile: 3
   goal: {fileID: 511901640}
   engineSound: {fileID: 7347101956017817645}
   bonusScoreKeeper: {fileID: 2028378268}
@@ -26896,7 +26896,7 @@ PrefabInstance:
     - target: {fileID: 7347101956382385788, guid: d6cfa77b0cf93b948b09e97c9ad399f6,
         type: 3}
       propertyPath: m_Speed
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7347101956382385789, guid: d6cfa77b0cf93b948b09e97c9ad399f6, type: 3}

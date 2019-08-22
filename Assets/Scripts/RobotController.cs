@@ -62,8 +62,8 @@ public class RobotController : MonoBehaviour
         int rnd1 = UnityEngine.Random.Range(0, 2);
         int rnd2 = UnityEngine.Random.Range(0, 2);
 
-        robotGateDecisions[4, 3] = rnd1; 
-        robotGateDecisions[5, 3] = rnd2;
+        robotGateDecisions[4, 2] = rnd1; 
+        robotGateDecisions[5, 2] = rnd2;
 
     }
 

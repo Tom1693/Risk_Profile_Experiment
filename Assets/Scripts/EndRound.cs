@@ -19,7 +19,7 @@ public class EndRound : MonoBehaviour
         if(UI.gateCounter > 9)
         {
             endScreen.SetActive(true);
-            scoreText.SetActive(true);
+            //scoreText.SetActive(true);
             SendScore();
         }
         else

@@ -8607,7 +8607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d831d0fecd05d8943900d5a7b17690c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partipantID: Test
+  partipantID: 17
   loadedGates: {fileID: 928599351}
   robot: {fileID: 398126678}
   score: {fileID: 2028378268}
@@ -28294,7 +28294,7 @@ PrefabInstance:
     - target: {fileID: 7347101956382385789, guid: d6cfa77b0cf93b948b09e97c9ad399f6,
         type: 3}
       propertyPath: RobotProfile
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7347101956382385789, guid: d6cfa77b0cf93b948b09e97c9ad399f6,
         type: 3}
